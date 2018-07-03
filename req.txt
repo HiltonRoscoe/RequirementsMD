@@ -1,0 +1,435 @@
+#import('helper', 'com.nomagic.requirements.reporthelper.SysMLReportHelper')
+#import('bookmark', 'com.hiltonroscoe.mdreportext.Bookmark')
+#set($level = 0)
+#macro(increaseIndent)
+#if($level==0)
+#set($margin = 0)
+#else
+#set($margin = 2)
+#end
+#set($level = $level + 1)
+#if ($level > 6)
+#set($h = 6)
+#else
+#set($h = $level)
+#end
+#end
+#macro(writeHeader $object $text)
+#if ($h == 1)
+#[[#]]# $text
+#elseif ($h == 2)
+#[[##]]# $text
+#elseif ($h == 3)
+#[[###]]# $text
+#elseif ($h == 4)
+#[[####]]# $text
+#elseif ($h == 5)
+#[[#####]]# $text
+#else
+$text
+#end
+#end
+#macro (createIcon $obj)
+#if ($IncludeIcon=='true')$report.getIconFor($obj)#end
+#end
+#macro (removeLineBreak $s)
+#set ($removeLineBreak = "")
+#foreach ($c in $s.toCharArray())#if($c.getType($c)==15)#set($removeLineBreak = $removeLineBreak.concat(" "))#else#set($removeLineBreak = $removeLineBreak.concat($c.toString()))#end#end
+#if ($removeLineBreak == "")#set($removeLineBreak = $empty)#end
+#end 
+#macro(baseClassifier $c)
+#set ($baseClassifier = $array.createArray())
+#recursiveBaseClassifier($c, $baseClassifier)
+#end
+#macro(recursiveBaseClassifier $c $baseClassifier)
+#if ($c.baseClassifier)
+#foreach($b in $c.baseClassifier)
+#if($b.baseClassifier)
+#recursiveBaseClassifier($b, $baseClassifier)
+#else
+#set($void = $baseClassifier.add($b.name))
+#end
+#end
+#else
+#set($void = $baseClassifier.add($c.name))
+#end
+#end
+#macro(resolveName $obj)
+#removeLineBreak($obj.name)
+#set ($resolveName = $removeLineBreak)
+#getType($obj)
+#if ($helper.isRequirement($obj))
+#resolveRequirementName($obj)
+#set($resolveName = $resolveRequirementName)
+#end
+#end
+#macro (getType $obj)
+#set ($getType = $obj.elementType)
+#set ($classifier = "")
+#set ($classifier = $obj.appliedStereotypeInstance.classifier)
+#foreach ($cc in $classifier)
+#baseClassifier($cc)
+#if ($baseClassifier.contains("Requirement"))
+#end
+#if ($helper.isRequirement($obj))
+#set ($getType = "requirement")
+#end
+#end
+#end
+#macro (resolveRequirementName $requirement)
+#set($id = "")
+#set($id = $requirement.id)
+#if(!$id || $id.trim()=="")#set($id = $empty)#end
+#set($name = "")
+#set($name = $requirement.name)
+#if(!$name || $name.trim()=="")#set($name = $empty)#end
+#removeLineBreak($name)
+#set($resolveRequirementName = $id.concat(" ").concat($removeLineBreak))
+#end
+#macro (createContent $object)
+#if (!$report.containsStereotype($object, 'auxiliaryResource'))
+#getType($object)
+#if (!$visitedSet.contains($object) && ($acceptedTypeSet.contains($getType) || $helper.isRequirement($object)))
+#set ($void = $visitedSet.add($object))
+#increaseIndent()
+#* requirement heading section *#
+#resolveName($object)
+#writeHeader($object, $resolveName)
+#* requirement text section *#
+#if ($helper.isRequirement($object))
+#if ($object.text && $object.text != "" && $helper.isNonEmptyList($object.text))
+$object.text
+#end
+#* owned diagram section *#
+#foreach ($diagram in $object.ownedDiagram)
+$diagram.image
+Figure 1.	$diagram.name
+#end
+#* requirement documentation section *#
+#if ($object.documentation != "")
+Documentation:
+$object.documentation
+#end
+#if ($rationalGroup.contains($object.ID))
+Rationales:
+#foreach ($rat in $rationalGroup.get($object.ID))
+$rat.body
+#end
+#end
+#if ($problemGroup.contains($object.ID))
+Problems:
+#foreach ($prob in $problemGroup.get($object.ID))
+$prob.body
+#end
+#end
+#if ($commentMap.containsKey($object.ID))
+#set ($commentGroup = $commentMap.get($object.ID))
+#foreach ($name in $sorter.sort($commentGroup.groupNames()))
+$name:
+#foreach ($com in $commentGroup.get($name))
+$com.body
+#set ($imageList = $array.createArray())
+#foreach ($comView in $com.presentationElement)
+#foreach ($path in $comView.connectedPathElements)
+#if ($path.client.elementType == 'imageshapeview')#set ($void = $imageList.add($path.client))
+#elseif ($path.supplier.elementType == 'imageshapeview')#set ($void = $imageList.add($path.supplier))
+#end
+#end
+#end
+#if ($imageList.size() > 0)#set ($void = $indirectImageMap.put($object, $imageList))#end
+#end
+#end
+#end
+#set($notes = $object.notes)
+#if ($notes.size() > 0)
+Note:
+#foreach ($note in $notes)
+$note
+#end
+#end
+#set($linkDiagramList = $array.createArray())
+#if ($object.hasHyperlinks())
+#foreach ($link in $object.hyperlinks)
+#if ($link.element.elementType == 'diagram')
+#set($void = $linkDiagramList.add($link.element))
+#end
+#end
+#end
+#if ($linkDiagramList.size() > 0)
+Hyperlinks:
+#foreach ($link in $linkDiagramList)
+#if ($link.elementType == 'imageshapeview')
+#createIcon($link)	$bookmark.open($link.ID, $object.name.concat(" Image"))
+#else
+#createIcon($link)	$bookmark.open($link.ID, $link.name)
+#end
+#end
+#end
+#foreach ($img in $indirectImageMap.get($object))
+$img.image
+Figure 2.	$object.name Image
+#end
+#* requirement properties section *#
+#if ($object.master)
+#set ($master = $object.master)
+#if ($master.size() > 0)
+Master:
+#foreach ($from in $sorter.humanSort($master, "Id"))
+#resolveName($from)
+#createIcon($master)	$resolveName
+		#end
+		#end
+#end
+#if ($object.hasRisk() && $object.risk)
+#if ($report.isEmpty($object.risk) == false)
+Risk:
+$object.risk.name
+#end
+#end
+#if ($object.hasSource() && $object.source)
+#if ($report.isEmpty($object.source) == false)
+
+Source:
+$object.source
+#end
+#end
+#if ($object.hasVerifyMethod() && $object.verifyMethod)
+#if ($report.isEmpty($object.verifyMethod) == false)
+Verify Method:
+$object.verifyMethod.name
+#end
+#end
+#if ($object.tags)
+#set ($tagSet = $array.createHashSet())
+#foreach ($tag in $object.tags)
+#set ($void = $tagSet.addAll($tag))
+#end
+#foreach ($entry in $sorter.sort($tagSet))
+#if (!$ignoredTagSet.contains($entry.name.toLowerCase()))
+#if ($report.isEmpty($entry) == false)
+#if ($report.isEmpty($entry.getValue()) == false)
+#if ($entry.getValue().size() > 0)
+$entry.name:
+#foreach ($value in $entry.getValue())
+#getType($value)
+#set ($text = "")
+#if ($report.isNamedElement($value))
+#resolveName($value)
+#createIcon($value)	$resolveName
+#else
+$value
+#end
+#end
+#end
+#end
+#end
+#end
+#end
+#end
+#if ($object.derivedFrom)
+#set ($derivedFrom = $object.derivedFrom)
+#if ($derivedFrom.size() > 0)
+Derived From:
+#foreach ($from in $sorter.humanSort($derivedFrom, "Id"))
+#resolveName($from)
+#createIcon($from)	$resolveName
+#end
+#end
+#end
+#set ($derivedList = $array.createArray())
+#foreach ($dep in $object.supplierDependency)
+#if ($dep.elementType == 'derivereqt')
+#foreach($source in $dep.source)
+#set ($void = $derivedList.add($source))
+#end
+#end
+#end
+#if ($derivedList.size() > 0)
+Derived:
+#foreach ($source in $sorter.humanSort($derivedList, "Id"))
+#resolveName($source)
+#createIcon($source)	$resolveName
+#end
+#end
+#if ($object.refinedBy)
+#set ($refinedBy = $object.refinedBy)
+#if ($refinedBy.size() > 0)
+Refined By:
+#foreach ($from in $sorter.humanSort($refinedBy, "Id"))
+#resolveName($from)
+#createIcon($from)	$resolveName
+#end
+#end
+#end
+#if ($object.satisfiedBy)
+#set ($satisfiedBy = $object.satisfiedBy)
+#if ($satisfiedBy.size() > 0)
+Satisfied By:
+#foreach ($from in $sorter.humanSort($satisfiedBy, "Id"))
+#resolveName($from)
+#createIcon($from)	$resolveName
+#end
+#end
+#end
+#if ($object.verifiedBy)
+#set ($verifiedBy = $object.verifiedBy)
+#if ($verifiedBy.size() > 0)
+Verified By:
+#foreach ($from in $sorter.sort($verifiedBy, "Id"))
+#resolveName($from)
+#createIcon($from)	$resolveName
+#end
+#end
+#end
+#if ($object.tracedTo)
+#set ($tracedTo = $object.tracedTo)
+#if ($tracedTo.size() > 0)
+Traced To:
+#foreach ($to in $sorter.sort($tracedTo, "Id"))
+#resolveName($to)
+#createIcon($to)	$resolveName
+#end
+#end
+#end
+#if ($helper.isAllocatedToInProject($object))
+#if ($object.allocatedTo)
+#set ($allocatedTo = $object.allocatedTo)
+#if ($allocatedTo.size() > 0)
+	Allocated To:
+#foreach ($from in $sorter.sort($allocatedTo, "Id"))
+#resolveName($from)
+#createIcon($from)	$resolveName
+#end
+#end
+#end
+#end
+#if ($helper.isAllocatedFromInProject($object))
+
+#if ($object.allocatedFrom)
+#set ($allocatedFrom = $object.allocatedFrom)
+#if ($allocatedFrom.size() > 0)
+	Allocated From:
+#foreach ($from in $sorter.sort($allocatedFrom, "Id"))
+#resolveName($from)
+#createIcon($from)	$resolveName
+#end
+#end
+#end
+#end
+#if ($object.tracedFrom)
+#set ($tracedFrom = $object.tracedFrom)
+#if ($tracedFrom.size() > 0)
+	Traced From:
+#foreach ($from in $sorter.sort($tracedFrom, "Id"))
+#resolveName($from)
+#createIcon($from)	$resolveName
+#end
+#end
+#end
+#if ($object.verifies)
+#set ($ver = $object.verifies)
+#if ($ver.size() > 0)
+	Verifies:
+#foreach ($from in $sorter.sort($ver, "Id"))
+#resolveName($from)
+#createIcon($from)	$resolveName
+#end
+#end
+#end
+#if ($object.satisfies)
+#set ($sat = $object.satisfies)
+#if ($sat.size() > 0)
+	Satisfies:
+#foreach ($from in $sorter.sort($sat, "Id"))
+#resolveName($from)
+#createIcon($from)	$resolveName
+#end
+#end
+#end
+#if ($object.refines)
+#set ($ref = $object.refines)
+#if ($ref.size() > 0)
+	Refines:
+#foreach ($from in $sorter.sort($ref, "Id"))
+#resolveName($from)
+#createIcon($from)	$resolveName
+#end
+#end
+#end
+#end
+#set ($childList = $array.createArray())
+#foreach ($e in $sorter.sort($object.ownedElement))
+#getType($e)
+#if ($acceptedTypeSet.contains($getType) || $helper.isRequirement($e))
+#set ($void = $childList.add($e))
+#end
+#end
+#foreach($child in $sorter.humanSort($childList, "Id"))
+#createContent($child)
+#end
+#set($level = $level - 1)
+#end
+#end
+#end
+#set ($acceptedTypeSet = $array.createHashSet())
+#set ($void = $acceptedTypeSet.add("package"))
+#set ($void = $acceptedTypeSet.add("model"))
+#set ($void = $acceptedTypeSet.add("profile"))
+#set ($void = $acceptedTypeSet.add("requirement"))
+#set ($ignoredTagSet = $array.createHashSet())
+#set ($void = $ignoredTagSet.add("master"))
+#set ($void = $ignoredTagSet.add("risk"))
+#set ($void = $ignoredTagSet.add("source"))
+#set ($void = $ignoredTagSet.add("verifymethod"))
+#set ($void = $ignoredTagSet.add("derivedfrom"))
+#set ($void = $ignoredTagSet.add("refinedby"))
+#set ($void = $ignoredTagSet.add("satisfiedby"))
+#set ($void = $ignoredTagSet.add("verifiedby"))
+#set ($void = $ignoredTagSet.add("tracedto"))
+#set ($void = $ignoredTagSet.add("tracedfrom"))
+#set ($void = $ignoredTagSet.add("derived"))
+#set ($void = $ignoredTagSet.add("id"))
+#set ($void = $ignoredTagSet.add("text"))
+#set ($void = $ignoredTagSet.add("hyperlinkmodel"))
+#set ($void = $ignoredTagSet.add("hyperlinkmodelactive"))
+#set ($void = $ignoredTagSet.add("hyperlinktextactive"))
+#set ($void = $ignoredTagSet.add("customnumberingdata"))
+#set ($rationalGroup = $group.create())
+#foreach ($rat in $Rationale)
+#foreach ($ant in $rat.annotatedElement)$rationalGroup.put($ant.ID, $rat)#end
+#end
+#set ($problemGroup = $group.create())
+#foreach ($prob in $Problem)
+#foreach ($ant in $prob.annotatedElement)$problemGroup.put($ant.ID, $prob)#end
+#end
+#set ($commentMap = $map.createHashMap())
+#foreach ($com in $Comment)
+#foreach ($ant in $com.annotatedElement)
+#set ($commentGroup = $commentMap.get($ant.ID))
+#if (!$commentGroup)#set($commentGroup = $group.create())#end
+#set ($appliedStereotype = $com.appliedStereotype)
+#if ($appliedStereotype && $appliedStereotype.size() > 0)
+#foreach($stereotype in $com.appliedStereotype)
+#foreach ($base in $stereotype.baseClassifier)
+#if ($base.name == 'InvisibleStereotype')$commentGroup.put('Comment', $com)
+#else$commentGroup.put($stereotype.name, $com)#end
+#end
+#end
+#else$commentGroup.put("Comment", $com)#end
+#set ($void = $commentMap.put($ant.ID, $commentGroup))
+#end
+#end
+#set ($indirectImageMap = $map.createHashMap())
+#set ($visitedSet = $map.createHashSet())
+#set ($rootList = $array.createArray())
+#foreach ($e in $sorter.sort($elements))
+#if ($e != $project.model && ($e.owner == $project.model || !$elements.contains($e.owner)))
+#getType($e)
+#if ($acceptedTypeSet.contains($getType) || $helper.isRequirement($e))
+#set ($void = $rootList.add($e))
+#end
+#end
+#end
+#foreach ($e in $sorter.humanSort($rootList, 'Id'))
+#createContent($e)
+#end
