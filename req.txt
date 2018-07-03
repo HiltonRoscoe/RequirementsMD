@@ -100,6 +100,11 @@ $text
 #if ($object.text && $object.text != "" && $helper.isNonEmptyList($object.text))
 $object.text
 #end
+#if ($object.discussion && $object.discussion != "" && $helper.isNonEmptyList($object.discussion))
+>**Discussion**
+>
+>$object.discussion
+#end
 #* owned diagram section *#
 #foreach ($diagram in $object.ownedDiagram)
 $diagram.image

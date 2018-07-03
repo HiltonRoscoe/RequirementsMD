@@ -174,6 +174,9 @@ Voting devices must provide support for the non-restrictive, publicly-available 
 •	Cast vote records, NIST SP 1500-103
 •	Ballot definition data, NIST SP 1500-104 
 
+>**Discussion**
+>
+>Manufacturers can use any proprietary input or output data formats or internal data formats, as long as they also provide support for the NIST SP specifications.  Implementations that do this using  translations or conversions from a proprietary format would be considered in conformance.
 
 
 
@@ -196,6 +199,9 @@ New requirement
 •	input or output of ballot programming data; and
 •	pre-election reports.
 
+>**Discussion**
+>
+>This requirement concerns input of pre-election data into an election definition device, such as for identification of political geography, contest, candidate, ballot data, and other pre-election information used to setup an election and produce ballots. It also concerns reports of pre-election data from the election definition device. The NIST SP specifications, where applicable, can be supported using  translations or conversions from manufacturer-proprietary formats.
 
 
 
@@ -215,6 +221,9 @@ New requirement
 ### <a name="_19_0beta_43701b0_1525645223077_988217_15601"></a>4.1-C Tabulator report data
 
 Tabulators must include support for the NIST CDF specifications for election results reporting data. 
+>**Discussion**
+>
+>This requirement deals with reporting of election results reporting data  from tabulators such as an EMS. Optical scanners, including CCOS and PCOS, generally do this using  exports of cast vote records/
 
 
 
@@ -289,6 +298,9 @@ New requirement
 ### <a name="_19_0beta_43701b0_1525645343539_931969_15622"></a>4.1-F Specification of common format usage
 
 The voting device or election system manufacturer must provide a specification describing how the manufacturer has implemented a NIST SP 1500 CDF specification that applies to the manufacturer’s specific voting devices and data. This includes  such items as descriptions of elements, attributes, constraints, extensions, syntax and semantics of the format, and definitions for data fields and schemas.
+>**Discussion**
+>
+>Conformance to a common data format does not guarantee data interoperability.  The manufacturer must document fully how it has interpreted and implemented a NIST CDF specification for its voting devices and the types of data exchanged orexported.
 
 
 
