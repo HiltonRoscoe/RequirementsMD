@@ -1,5 +1,20 @@
+#set($packages = $array.createArray())
+#set($void = $array.addCollection($packages, $Package))
+#foreach($e in $packages)
+#if($e.qualifiedName =='Glossary')
+#set($glossaryPackage = $e)
+#end
+#end
+#set ($termList = $array.createArray())
+#foreach ($element in $report.getOwnedElementsIncludingAdditional($glossaryPackage, true))
+#if ($element.elementType == "class")
+#set ($void = $termList.add($element))
+#end
+#end
+
 #import('helper', 'com.nomagic.requirements.reporthelper.SysMLReportHelper')
 #import('bookmark', 'com.hiltonroscoe.mdreportext.Bookmark')
+#import('hrsort', 'com.hiltonroscoe.mdreportext.Sorter')
 #set($level = 0)
 #macro(increaseIndent)
 #if($level==0)
@@ -98,7 +113,14 @@ $text
 #* requirement text section *#
 #if ($helper.isRequirement($object))
 #if ($object.text && $object.text != "" && $helper.isNonEmptyList($object.text))
-$object.text
+#set ($docLink = $object.text)
+#foreach ($termToMatch in $hrsort.sortByLength($termList))
+#if($object.text.toLowerCase().contains($termToMatch.name.toLowerCase()))
+#set ($docLink = 
+$docLink.replaceAll("(?i) (\b$termToMatch.name\b)([ .,;!])"," [$1](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#$termToMatch.name.replaceAll(""\s+"",""""))$2"))
+#end
+#end
+$docLink
 #end
 #if ($object.discussion && $object.discussion != "" && $helper.isNonEmptyList($object.discussion))
 >**Discussion**
@@ -113,6 +135,7 @@ Figure 1.	$diagram.name
 #* requirement documentation section *#
 #if ($object.documentation != "")
 Documentation:
+
 $object.documentation
 #end
 #if ($rationalGroup.contains($object.ID))
