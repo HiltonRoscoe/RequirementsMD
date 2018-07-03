@@ -257,6 +257,9 @@ New requirement
 ### <a name="_19_0beta_43701b0_1525645295325_870029_15608"></a>4.1-D Exchange of cast vote records
 
 Devices that export or import CVRs must support the [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) CDF specifications that apply to export and import of CVRs.
+>**Discussion**
+>
+>Devices that export or import CVRs typically include the EMS, CCOS and PCOS, other vote-capture devices, and audit devices. 
 
 
 
@@ -280,6 +283,9 @@ New requirement
 ### <a name="_19_0beta_43701b0_1525645323818_266352_15615"></a>4.1-E Exchange of voting device election logs
 
 Voting devices must support the export or import of [election](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#election) log data using the [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500-101 specification.
+>**Discussion**
+>
+>This requirement refers to election logs and not system logs provided by common operating systems such as Microsoft Windows or Apple IOS.  This requirement does not mandate that manufacturers use the format for storing election log information; a manufacturer can meet this requirement by conversion or translation from a native format into the NIST SP 1500-101 format.
 
 
 
@@ -330,6 +336,9 @@ New requirement
 ### <a name="_19_0beta_43701b0_1525645375620_140639_15629"></a>4.1-G Public specification of manufacturer native formats
 
 Where a [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500 CDF specification or other interoperable interchange specification does not exist for a particular area of data interchange,  the [voting device](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#votingdevice) [manufacturer](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#manufacturer) must provide a specification for its native format, describing how the [manufacturer](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#manufacturer) has implemented the native format that applies  to the manufacturer’s specific voting devices and data. This includes such items as descriptions of elements, attributes, constraints, extensions, syntax and semantics of the format, and definitions for data fields and schemas. 
+>**Discussion**
+>
+>This requirement is essentially the same as requirement 4.1-F but applies to the manufacturer’s own native formats where a NIST CDF specification does not exist.
 
 
 
@@ -350,6 +359,9 @@ New requirement
 ### <a name="_19_0beta_43701b0_1525645524629_492757_15636"></a>4.1-H Common format across manufacturers
 
 The [voting system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#votingsystem) [manufacturer](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#manufacturer) must support the [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500 CDF specifications for export and interchange of data and reports across its major [device](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#device) categories.
+>**Discussion**
+>
+>Different equipment from the same manufacturer will be interoperable with the respect to data format.  For example, a common ballot definition will  apply to all manufacturer vote-capture devices and not be specific to each device.   Export of data (such as  reports and CVRs) will  use a common format across all devices.
 
 
 
