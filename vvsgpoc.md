@@ -21,6 +21,9 @@ Voting devices must provide support for the non-restrictive, publicly-available 
 
 
 
+
+Source:
+New requirement
 **Derived From:**
 
 - [4.1 Interoperable Formats](#_19_0beta_43701b0_1525644117735_948734_12981)
@@ -39,6 +42,9 @@ Voting devices must provide support for the non-restrictive, publicly-available 
 
 
 
+
+Source:
+New requirement
 **Derived From:**
 
 - [4.1 Interoperable Formats](#_19_0beta_43701b0_1525644117735_948734_12981)
@@ -50,17 +56,24 @@ Voting devices must provide support for the non-restrictive, publicly-available 
 
 #### <a name="_19_0beta_43701b0_1525645223077_988217_15601"></a>4.1-C Tabulator report data
 
-Tabulators must include support for the NIST CDF specifications for election results reporting data.
+Tabulators must include support for the NIST CDF specifications for election results reporting data. 
 
 
 
+
+Source:
+New requirement
 **Derived From:**
 
 - [4.1 Interoperable Formats](#_19_0beta_43701b0_1525644117735_948734_12981)
 
+**Refined By:**
+
+- [Election Management System](#_19_0beta_43701b0_1528124439592_57284_20646)
+
 **Satisfied By:**
 
-- [ElectionResults](#_17_0_2_4_78e0236_1389366160416_780968_2277)
+- [Election Results Reporting CDF](#_19_0beta_43701b0_1528127157688_702511_33578)
 
 **Traced To:**
 
@@ -69,7 +82,7 @@ Tabulators must include support for the NIST CDF specifications for election res
 
 **Traced From:**
 
-- [ElectionResults](#_17_0_2_4_78e0236_1389366160416_780968_2277)
+- [Election Results Reporting CDF](#_19_0beta_43701b0_1528127157688_702511_33578)
 
 
 #### <a name="_19_0beta_43701b0_1525645295325_870029_15608"></a>4.1-D Exchange of cast vote records
@@ -78,6 +91,9 @@ Devices that export or import CVRs must support the NIST CDF specifications that
 
 
 
+
+Source:
+New requirement
 **Derived From:**
 
 - [4.1 Interoperable Formats](#_19_0beta_43701b0_1525644117735_948734_12981)
@@ -97,6 +113,9 @@ Voting devices must support the export or import of election log data using the 
 
 
 
+
+Source:
+New requirement
 **Derived From:**
 
 - [4.1 Interoperable Formats](#_19_0beta_43701b0_1525644117735_948734_12981)
@@ -112,6 +131,9 @@ The voting device or election system manufacturer must provide a specification d
 
 
 
+
+Source:
+New requirement
 **Derived From:**
 
 - [4.1 Interoperable Formats](#_19_0beta_43701b0_1525644117735_948734_12981)
@@ -136,6 +158,9 @@ Where a NIST SP 1500 CDF specification or other interoperable interchange specif
 
 
 
+
+Source:
+New requirement
 **Derived From:**
 
 - [4.1 Interoperable Formats](#_19_0beta_43701b0_1525644117735_948734_12981)
@@ -152,6 +177,9 @@ The voting system manufacturer must support the NIST SP 1500 CDF specifications 
 
 
 
+
+Source:
+New requirement
 **Derived From:**
 
 - [4.1 Interoperable Formats](#_19_0beta_43701b0_1525644117735_948734_12981)
@@ -186,47 +214,6 @@ The report must include, at a minimum:
 ## <a name="_18_5_3_43701b0_1520020759990_545095_12939"></a>classes
 
 
-## <a name="_19_0beta_43701b0_1520122440255_993218_8145"></a>interoperability
-
-
-### <a name="_19_0beta_43701b0_1520122492709_558132_8189"></a>20 Integratability of systems and devices
-
-Systems MUST maximize integratability with other systems and/or devices of other systems.
-
-
-Comment:
-
-
-**Refined By:**
-
-- [21 Standard device interfaces](#_19_0beta_43701b0_1520122735485_987424_8235)
-- [22 Standard protocols and algorithms](#_19_0beta_43701b0_1520122842398_188408_8304)
-
-
-### <a name="_19_0beta_43701b0_1520122735485_987424_8235"></a>21 Standard device interfaces
-
-Standard, common hardware interfaces and protocols MUST be used to connect devices. 
-
-
-
-Verify Method:
-Analysis
-**Refines:**
-
-	[20 Integratability of systems and devices](#_19_0beta_43701b0_1520122492709_558132_8189)
-
-
-### <a name="_19_0beta_43701b0_1520122842398_188408_8304"></a>22 Standard protocols and algorithms
-
-Standard, publicly-available and publicly-documented protocols MUST be used, where possible, for exchanging data or encoding data.
-
-
-
-**Refines:**
-
-	[20 Integratability of systems and devices](#_19_0beta_43701b0_1520122492709_558132_8189)
-
-
 ## <a name="_18_5_3_43701b0_1520020733840_632681_12933"></a>Principles
 
 
@@ -238,10 +225,6 @@ Standard, publicly-available and publicly-documented protocols MUST be used, whe
 The election definition device MUST provide for the logical definition of the ballot, including the definition of the number of allowable votes for each contest.
 
 
-
-**Traced To:**
-
-- [Election definition devices](#_18_5_3_43701b0_1520020803111_660528_12980)
 
 
 ##### <a name="_18_5_3_43701b0_1520019852799_227590_11794"></a> Election definition devices, administrative subdivisions 
@@ -260,10 +243,6 @@ Ballot questions and their associated text.
 
 
 
-
-**Traced To:**
-
-- [Election definition devices](#_18_5_3_43701b0_1520020803111_660528_12980)
 
 
 ##### <a name="_18_5_3_43701b0_1520020941274_82223_13171"></a> Election definition devices, election districts
@@ -395,4 +374,7 @@ Standard, publicly-available formats for other types of data are used, where ava
 Widely-used hardware interfaces and communications protocols are used. 
 
 
+
+
+## <a name="_19_0beta_43701b0_1528124439590_803493_20643"></a>Use cases
 
