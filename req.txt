@@ -16,15 +16,15 @@
 #end
 #macro(writeHeader $object $text)
 #if ($h == 1)
-#[[#]]# $text
+#[[#]]# $bookmark.create($object.ID, $text)
 #elseif ($h == 2)
-#[[##]]# $text
+#[[##]]# $bookmark.create($object.ID, $text)
 #elseif ($h == 3)
-#[[###]]# $text
+#[[###]]# $bookmark.create($object.ID, $text)
 #elseif ($h == 4)
-#[[####]]# $text
+#[[####]]# $bookmark.create($object.ID, $text)
 #elseif ($h == 5)
-#[[#####]]# $text
+#[[#####]]# $bookmark.create($object.ID, $text)
 #else
 $text
 #end
@@ -176,7 +176,7 @@ Figure 2.	$object.name Image
 Master:
 #foreach ($from in $sorter.humanSort($master, "Id"))
 #resolveName($from)
-#createIcon($master)	$resolveName
+#createIcon($master)	$bookmark.open($from.ID, $resolveName)
 		#end
 		#end
 #end
@@ -215,7 +215,7 @@ $entry.name:
 #set ($text = "")
 #if ($report.isNamedElement($value))
 #resolveName($value)
-#createIcon($value)	$resolveName
+#createIcon($value)	$bookmark.open($value.ID, $resolveName)
 #else
 $value
 #end
@@ -229,11 +229,13 @@ $value
 #if ($object.derivedFrom)
 #set ($derivedFrom = $object.derivedFrom)
 #if ($derivedFrom.size() > 0)
-Derived From:
+**Derived From:**
+
 #foreach ($from in $sorter.humanSort($derivedFrom, "Id"))
 #resolveName($from)
-#createIcon($from)	$resolveName
+- #createIcon($from)$bookmark.open($from.ID, $resolveName)
 #end
+
 #end
 #end
 #set ($derivedList = $array.createArray())
@@ -242,64 +244,77 @@ Derived From:
 #foreach($source in $dep.source)
 #set ($void = $derivedList.add($source))
 #end
+
 #end
 #end
 #if ($derivedList.size() > 0)
-Derived:
+**Derived:**
+
 #foreach ($source in $sorter.humanSort($derivedList, "Id"))
 #resolveName($source)
-#createIcon($source)	$resolveName
+- #createIcon($source)$bookmark.open($source.ID, $resolveName)
 #end
+
 #end
 #if ($object.refinedBy)
 #set ($refinedBy = $object.refinedBy)
 #if ($refinedBy.size() > 0)
-Refined By:
+**Refined By:**
+
 #foreach ($from in $sorter.humanSort($refinedBy, "Id"))
 #resolveName($from)
-#createIcon($from)	$resolveName
+- #createIcon($from)$bookmark.open($from.ID, $resolveName)
 #end
+
 #end
 #end
 #if ($object.satisfiedBy)
 #set ($satisfiedBy = $object.satisfiedBy)
 #if ($satisfiedBy.size() > 0)
-Satisfied By:
+**Satisfied By:**
+
 #foreach ($from in $sorter.humanSort($satisfiedBy, "Id"))
 #resolveName($from)
-#createIcon($from)	$resolveName
+- #createIcon($from)$bookmark.open($from.ID, $resolveName)
 #end
+
 #end
 #end
 #if ($object.verifiedBy)
 #set ($verifiedBy = $object.verifiedBy)
 #if ($verifiedBy.size() > 0)
-Verified By:
+**Verified By:**
+
 #foreach ($from in $sorter.sort($verifiedBy, "Id"))
 #resolveName($from)
-#createIcon($from)	$resolveName
+- #createIcon($from)$bookmark.open($from.ID, $resolveName)
 #end
+
 #end
 #end
 #if ($object.tracedTo)
 #set ($tracedTo = $object.tracedTo)
 #if ($tracedTo.size() > 0)
-Traced To:
+**Traced To:**
+
 #foreach ($to in $sorter.sort($tracedTo, "Id"))
 #resolveName($to)
-#createIcon($to)	$resolveName
+- #createIcon($to)$bookmark.open($to.ID, $resolveName)
 #end
+
 #end
 #end
 #if ($helper.isAllocatedToInProject($object))
 #if ($object.allocatedTo)
 #set ($allocatedTo = $object.allocatedTo)
 #if ($allocatedTo.size() > 0)
-	Allocated To:
+**Allocated To:**
+
 #foreach ($from in $sorter.sort($allocatedTo, "Id"))
 #resolveName($from)
-#createIcon($from)	$resolveName
+- #createIcon($from)$bookmark.open($from.ID, $resolveName)
 #end
+
 #end
 #end
 #end
@@ -308,52 +323,62 @@ Traced To:
 #if ($object.allocatedFrom)
 #set ($allocatedFrom = $object.allocatedFrom)
 #if ($allocatedFrom.size() > 0)
-	Allocated From:
+**Allocated From:**
+
 #foreach ($from in $sorter.sort($allocatedFrom, "Id"))
 #resolveName($from)
-#createIcon($from)	$resolveName
+- #createIcon($from)$bookmark.open($from.ID, $resolveName)
 #end
+
 #end
 #end
 #end
 #if ($object.tracedFrom)
 #set ($tracedFrom = $object.tracedFrom)
 #if ($tracedFrom.size() > 0)
-	Traced From:
+**Traced From:**
+
 #foreach ($from in $sorter.sort($tracedFrom, "Id"))
 #resolveName($from)
-#createIcon($from)	$resolveName
+- #createIcon($from)$bookmark.open($from.ID, $resolveName)
 #end
+
 #end
 #end
 #if ($object.verifies)
 #set ($ver = $object.verifies)
 #if ($ver.size() > 0)
-	Verifies:
+**Verifies:**
+
 #foreach ($from in $sorter.sort($ver, "Id"))
 #resolveName($from)
-#createIcon($from)	$resolveName
+- #createIcon($from)$bookmark.open($from.ID, $resolveName)
 #end
+
 #end
 #end
 #if ($object.satisfies)
 #set ($sat = $object.satisfies)
 #if ($sat.size() > 0)
-	Satisfies:
+**Satisfies:**
+
 #foreach ($from in $sorter.sort($sat, "Id"))
 #resolveName($from)
-#createIcon($from)	$resolveName
+- #createIcon($from)$bookmark.open($from.ID, $resolveName)
 #end
+
 #end
 #end
 #if ($object.refines)
 #set ($ref = $object.refines)
 #if ($ref.size() > 0)
-	Refines:
+**Refines:**
+
 #foreach ($from in $sorter.sort($ref, "Id"))
 #resolveName($from)
-#createIcon($from)	$resolveName
+#createIcon($from)	$bookmark.open($from.ID, $resolveName)
 #end
+
 #end
 #end
 #end
