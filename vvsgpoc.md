@@ -1,31 +1,32 @@
 
+
 # <a name="_18_5_3_43701b0_1520020733840_632681_12933"></a> Principles
 
 
 ## <a name="_19_0beta_43701b0_1525565139857_259285_8317"></a>1 High Quality Design
 
-The voting system is designed to accurately, completely, and robustly carry out election processes.
+The [voting system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#votingsystem) is designed to accurately, completely, and robustly carry out [election](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#election) processes.
 
 
 
 
 ### <a name="_19_0beta_43701b0_1525564959768_985960_8208"></a>1.1 Process Specifications
 
-The voting system is designed using commonly-accepted election process specifications.
+The [voting system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#votingsystem) is designed using commonly-accepted [election](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#election) process specifications.
 
 
 
 
 ### <a name="_19_0beta_43701b0_1525565078994_53898_8216"></a>1.2 Real World
 
-The voting system is designed to function correctly under real-world operating conditions.
+The [voting system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#votingsystem) is designed to function correctly under real-world operating conditions.
 
 
 
 
 ### <a name="_19_0beta_43701b0_1525565324255_169706_8457"></a>1.3 Identify correct implementations
 
-Voting system design supports evaluation methods enabling testers to clearly distinguish systems that correctly implement specified properties from those that do
+Voting [system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#system) design supports evaluation methods enabling testers to clearly distinguish systems that correctly implement specified properties from those that do
 not.
 
 
@@ -33,21 +34,21 @@ not.
 
 ## <a name="_19_0beta_43701b0_1525565712216_947223_10341"></a>2 High Quality Implementation
 
-The voting system is implemented using high quality best practices.
+The [voting system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#votingsystem) is implemented using high quality best practices.
 
 
 
 
 ### <a name="_19_0beta_43701b0_1525565765894_162745_10348"></a>2.1 Best Practices
 
-The voting system and its software are implemented using trustworthy materials and best practices in software development. 
+The [voting system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#votingsystem) and its [software](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#software) are implemented using trustworthy materials and best practices in [software](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#software) development. 
 
 
 
 
 ### <a name="_19_0beta_43701b0_1525565790374_415540_10357"></a>2.2 User Centered
 
-The voting system is implemented using best practice user-centered design methods, for a wide range of representative voters, including those with and without disabilities, and election workers.
+The [voting system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#votingsystem) is implemented using best practice user-centered design methods, for a wide range of representative voters, including those with and without disabilities, and [election](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#election) workers.
 
 
 
@@ -63,14 +64,14 @@ The voting system is implemented using best practice user-centered design method
 
 ## <a name="_19_0beta_43701b0_1525644062886_348125_12974"></a>4 Interoperable
 
-The voting system is designed to support interoperability in its interfaces to external systems, its interfaces to internal components, its data, and its peripherals.
+The [voting system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#votingsystem) is designed to support [interoperability](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#interoperability) in its interfaces to external systems, its interfaces to internal components, its data, and its peripherals.
 
 
 
 
 ### <a name="_19_0beta_43701b0_1525644117735_948734_12981"></a>4.1 Interoperable Formats
 
-Voting system data that is imported, exported, or otherwise reported, is in an interoperable format. 
+Voting [system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#system) data that is imported, exported, or otherwise reported, is in an interoperable format. 
 
 
 
@@ -114,28 +115,28 @@ Standard, publicly-available formats for other types of data are used, where ava
 
 ### <a name="_19_0beta_43701b0_1525644190271_190779_12995"></a>4.3 Widely-used protocols
 
-Widely-used hardware interfaces and communications protocols are used. 
+Widely-used [hardware](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#hardware) interfaces and communications protocols are used. 
 
 
 
 
 ## <a name="_18_5_3_43701b0_1520019182414_823285_11345"></a>17 Election definition devices, ballot definition
 
-The election definition device MUST provide for the logical definition of the ballot, including the definition of the number of allowable votes for each contest.
+The [election definition](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#electiondefinition) [device](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#device) MUST provide for the logical definition of the [ballot](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#ballot), including the definition of the number of allowable votes for each [contest](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#contest).
 
 
 
 
 ### <a name="_18_5_3_43701b0_1520019852799_227590_11794"></a> Election definition devices, administrative subdivisions 
 
-The election definition device MUST provide for the logical definition of administrative subdivisions, where the list contests varies between subdivisions.
+The [election definition](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#electiondefinition) [device](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#device) MUST provide for the logical definition of administrative subdivisions, where the list contests varies between subdivisions.
 
 
 
 
 ### <a name="_18_5_3_43701b0_1520019776098_403926_11736"></a> Election definition devices, ballot definition details
 
-The election definition device MUST be capable of collecting and maintaining
+The [election definition](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#electiondefinition) [device](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#device) MUST be capable of collecting and maintaining
 Contests and their associated labels and instructions;
 Candidate names and their associated labels; and
 Ballot questions and their associated text.
@@ -146,14 +147,14 @@ Ballot questions and their associated text.
 
 ### <a name="_18_5_3_43701b0_1520020941274_82223_13171"></a> Election definition devices, election districts
 
-The election definition device MUST enable EOs to define multiple election districts.
+The [election definition](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#electiondefinition) [device](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#device) MUST enable EOs to define multiple [election](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#election) districts.
 
 
 
 
 ### <a name="_18_5_3_43701b0_1520020979904_518970_13180"></a> Election definition devices, identifiers
 
-The election definition device MUST enable EOs to associate a minimum of 3 identifiers each for administration subdivisions, election districts, contests, and candidates.
+The [election definition](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#electiondefinition) [device](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#device) MUST enable EOs to associate a minimum of 3 identifiers each for administration subdivisions, [election](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#election) districts, contests, and candidates.
 
 
 
@@ -166,13 +167,13 @@ The election definition device MUST enable EOs to associate a minimum of 3 ident
 
 ### <a name="_19_0beta_43701b0_1525644393086_87534_13003"></a>4.1-A Data export and exchange format
 
-Voting devices must provide support for the non-restrictive, publicly-available NIST SP Common Data Format (CDF) specifications for data inputs and output:
-•	Election programming data, NIST SP 1500-100
-•	Election results data, NIST SP 1500-100 
-•	Election event logging data, NIST SP 1500-101
-•	Voter registration-related data, NIST SP 1500-102
-•	Cast vote records, NIST SP 1500-103
-•	Ballot definition data, NIST SP 1500-104 
+Voting devices must provide support for the non-restrictive, publicly-available [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP [Common Data Format](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#CommonDataFormat) (CDF) specifications for data inputs and output:
+•	Election programming data, [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500-100
+•	Election results data, [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500-100 
+•	Election event logging data, [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500-101
+•	Voter registration-related data, [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500-102
+•	Cast [vote](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#vote) records, [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500-103
+•	Ballot definition data, [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500-104 
 
 >**Discussion**
 >
@@ -195,8 +196,8 @@ New requirement
 
 ### <a name="_19_0beta_43701b0_1525644509683_163761_13009"></a>4.1-B Election programming data input and output
 
-•	input or output of election programming data;
-•	input or output of ballot programming data; and
+•	input or output of [election programming](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#electionprogramming) data;
+•	input or output of [ballot](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#ballot) programming data; and
 •	pre-election reports.
 
 >**Discussion**
@@ -220,7 +221,7 @@ New requirement
 
 ### <a name="_19_0beta_43701b0_1525645223077_988217_15601"></a>4.1-C Tabulator report data
 
-Tabulators must include support for the NIST CDF specifications for election results reporting data. 
+Tabulators must include support for the [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) CDF specifications for [election](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#election) results reporting data. 
 >**Discussion**
 >
 >This requirement deals with reporting of election results reporting data  from tabulators such as an EMS. Optical scanners, including CCOS and PCOS, generally do this using  exports of cast vote records/
@@ -255,7 +256,7 @@ New requirement
 
 ### <a name="_19_0beta_43701b0_1525645295325_870029_15608"></a>4.1-D Exchange of cast vote records
 
-Devices that export or import CVRs must support the NIST CDF specifications that apply to export and import of CVRs.
+Devices that export or import CVRs must support the [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) CDF specifications that apply to export and import of CVRs.
 
 
 
@@ -278,7 +279,7 @@ New requirement
 
 ### <a name="_19_0beta_43701b0_1525645323818_266352_15615"></a>4.1-E Exchange of voting device election logs
 
-Voting devices must support the export or import of election log data using the NIST SP 1500-101 specification.
+Voting devices must support the export or import of [election](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#election) log data using the [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500-101 specification.
 
 
 
@@ -297,7 +298,7 @@ New requirement
 
 ### <a name="_19_0beta_43701b0_1525645343539_931969_15622"></a>4.1-F Specification of common format usage
 
-The voting device or election system manufacturer must provide a specification describing how the manufacturer has implemented a NIST SP 1500 CDF specification that applies to the manufacturer’s specific voting devices and data. This includes  such items as descriptions of elements, attributes, constraints, extensions, syntax and semantics of the format, and definitions for data fields and schemas.
+The [voting device](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#votingdevice) or [election](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#election) [system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#system) [manufacturer](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#manufacturer) must provide a specification describing how the [manufacturer](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#manufacturer) has implemented a [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500 CDF specification that applies to the manufacturer’s specific voting devices and data. This includes  such items as descriptions of elements, attributes, constraints, extensions, syntax and semantics of the format, and definitions for data fields and schemas.
 >**Discussion**
 >
 >Conformance to a common data format does not guarantee data interoperability.  The manufacturer must document fully how it has interpreted and implemented a NIST CDF specification for its voting devices and the types of data exchanged orexported.
@@ -328,7 +329,7 @@ New requirement
 
 ### <a name="_19_0beta_43701b0_1525645375620_140639_15629"></a>4.1-G Public specification of manufacturer native formats
 
-Where a NIST SP 1500 CDF specification or other interoperable interchange specification does not exist for a particular area of data interchange,  the voting device manufacturer must provide a specification for its native format, describing how the manufacturer has implemented the native format that applies  to the manufacturer’s specific voting devices and data. This includes such items as descriptions of elements, attributes, constraints, extensions, syntax and semantics of the format, and definitions for data fields and schemas. 
+Where a [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500 CDF specification or other interoperable interchange specification does not exist for a particular area of data interchange,  the [voting device](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#votingdevice) [manufacturer](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#manufacturer) must provide a specification for its native format, describing how the [manufacturer](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#manufacturer) has implemented the native format that applies  to the manufacturer’s specific voting devices and data. This includes such items as descriptions of elements, attributes, constraints, extensions, syntax and semantics of the format, and definitions for data fields and schemas. 
 
 
 
@@ -348,7 +349,7 @@ New requirement
 
 ### <a name="_19_0beta_43701b0_1525645524629_492757_15636"></a>4.1-H Common format across manufacturers
 
-The voting system manufacturer must support the NIST SP 1500 CDF specifications for export and interchange of data and reports across its major device categories.
+The [voting system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#votingsystem) [manufacturer](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#manufacturer) must support the [NIST](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#NIST) SP 1500 CDF specifications for export and interchange of data and reports across its major [device](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#device) categories.
 
 
 
@@ -367,11 +368,11 @@ New requirement
 
 ## <a name="_19_0beta_43701b0_1525565876944_868860_10364"></a> User-centered design process
 
-The manufacturer must submit a report providing documentation that the system was developed following best practices for a user-centered design process. 
-The report must include, at a minimum:
+The [manufacturer](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#manufacturer) must submit a [report](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#report) providing documentation that the [system](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#system) was developed following best practices for a user-centered design process. 
+The [report](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#report) must include, at a minimum:
 
 •A listing of user-centered design methods used
-•The types of voters and election workers included in those methods
+•The types of voters and [election](https://github.com/HiltonRoscoe/GlossaryMD/blob/master/bigglossary.md#election) workers included in those methods
 •How those methods were integrated into the overall implementation process
 •How the results of those methods contributed to developing the final features and design of the voting system			
 
@@ -385,4 +386,7 @@ The report must include, at a minimum:
 **Traced To:**
 
 - [2.2 User Centered](#_19_0beta_43701b0_1525565790374_415540_10357)
+
+
+# <a name="_18_5_3_43701b0_1530537245397_153490_5791"></a>Glossary
 
